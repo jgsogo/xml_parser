@@ -71,7 +71,7 @@ namespace core {
                     elem = it->second->allocate(this, parent, depth, tag, atts);
                     }
                 else {
-                    elem = new node_expat(this, parent, depth, 0, tag, atts);
+                    elem = new node_expat(this, parent, depth, nullptr, tag, atts);
                     }
                 if (elem) {_nodes.push_back(elem);}
                 return elem;
