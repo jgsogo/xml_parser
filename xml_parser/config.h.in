@@ -1,0 +1,9 @@
+
+#define XML_PARSER_MAJOR_VERSION (@XML_PARSER_MAJOR_VERSION@)
+#define XML_PARSER_MINOR_VERSION (@XML_PARSER_MINOR_VERSION@)
+#define XML_PARSER_PATCH_VERSION (@XML_PARSER_PATCH_VERSION@)
+#define XML_PARSER_VERSION_STRING "@XML_PARSER_VERSION@"
+
+const std::string app_name = "xml_parser";
+const std::string app_namespace = "core::service";
+const std::string doc = "Parse xml files with callbacks";

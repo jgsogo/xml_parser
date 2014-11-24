@@ -1,0 +1,16 @@
+# - Config file for the TxtTable package
+# It defines the following variables
+#  XML_PARSER_INCLUDE_DIRS - include directories for TxtTable
+#  XML_PARSER_LIBRARIES    - libraries to link against
+#  XML_PARSER_EXECUTABLE   - the bar executable
+
+# Compute paths
+get_filename_component(XML_PARSER_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(XML_PARSER_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+include("${XML_PARSER_CMAKE_DIR}/xml_parser-targets.cmake")
+
+# These are IMPORTED targets created by xml_parser-targets.cmake
+set(XML_PARSER_LIBRARIES xml_parser)
+#set(FOOBAR_EXECUTABLE bar)
