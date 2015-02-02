@@ -1,13 +1,12 @@
 include (GenerateExportHeader)
 include(../depends/cmake/use_precompiled_header2.cmake)
 
-# Look for boost
-include(../depends/cmake/boost_install.txt)
-BoostInstall()
-
+if(BIICODE)
+else()
 # Look for expat
 include(../depends/cmake/expat_install.txt)
 EXPATInstall()
+endif()
 
 #------------------------------------------
 #   List source files
@@ -20,7 +19,6 @@ set(SRC_FILES
 	CMakeLists.txt
 	)
 
-include_directories( ${Boost_INCLUDE_DIRS} )
 include_directories( ${EXPAT_INCLUDE_DIR} )
 
 

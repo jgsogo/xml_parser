@@ -5,25 +5,11 @@
 
 #pragma once
 
-#ifdef _WIN32
-
-	#if _MSC_VER == 1310
-
-	#else
-		#include "targetver.h"
-	#endif
-
-    #define WIN32_LEAN_AND_MEAN             // Excluir material rara vez utilizado de encabezados de Windows
-    // Archivos de encabezado de Windows:
-    #include <windows.h>
-
-#endif
-
 #ifdef JAVI_EXTRAS
     #include <vld.h>
 #endif
 
-#include "expat.h"
+#include "jgsogo/expat/expat/lib/expat.h"
 
 #include "../depends/logger/logging.h"
 #undef LOGGER
