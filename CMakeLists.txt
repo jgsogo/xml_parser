@@ -56,10 +56,13 @@ endif()
 # The interesting stuff goes here
 # ===============================
 
+if (BIICODE)
+else()
 # Add all targets to the build-tree export set
 export(TARGETS xml_parser
   FILE "${PROJECT_BINARY_DIR}/xml_parser-targets.cmake")
 
+  
 # Export the package for use from the build-tree
 # (this registers the build-tree with a global CMake-registry)
 export(PACKAGE xml_parser)
@@ -84,9 +87,10 @@ install(FILES
   "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/xml_parser-config.cmake"
   "${PROJECT_BINARY_DIR}/xml_parser-config-version.cmake"
   DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-
+  
 # Install the export set for use with the install-tree
 install(EXPORT xml_parser-targets DESTINATION
   "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+endif()
 
 message(STATUS "Files will be installed at ${CMAKE_INSTALL_PREFIX}")

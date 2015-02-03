@@ -1,11 +1,15 @@
+
 include (GenerateExportHeader)
 include(../depends/cmake/use_precompiled_header2.cmake)
 
 if(BIICODE)
+              set(EXPAT_LIBRARIES jgsogo_expat)
 else()
-# Look for expat
-include(../depends/cmake/expat_install.txt)
-EXPATInstall()
+              
+              # Look for expat
+              include(../depends/cmake/expat_install.txt)
+              EXPATInstall()
+              include_directories( ${EXPAT_INCLUDE_DIR} )
 endif()
 
 #------------------------------------------
@@ -13,11 +17,11 @@ endif()
 file(GLOB _headers "*.h")
 file(GLOB _src "*.cpp")
 set(SRC_FILES
-	${_headers}
-	${_src}
-	config.h.in
-	CMakeLists.txt
-	)
+              ${_headers}
+              ${_src}
+              config.h.in
+              CMakeLists.txt
+              )
 
 include_directories( ${EXPAT_INCLUDE_DIR} )
 
@@ -46,7 +50,11 @@ configure_file(config.h.in "${CMAKE_CURRENT_BINARY_DIR}/config.h" @ONLY)
 add_definitions(-D_UNICODE -DUNICODE)
 add_compiler_export_flags()
 add_library(xml_parser SHARED ${SRC_FILES})
-target_link_libraries(xml_parser ${EXPAT_LIBRARIES})
+message("*****************************************************************")
+message("BII_LIB_DEPS >>> " ${BII_LIB_DEPS} )
+message("EXPAT_LIBRARIES >>> " ${EXPAT_LIBRARIES} )
+message("*****************************************************************")
+target_link_libraries(xml_parser ${EXPAT_LIBRARIES} )
 generate_export_header(xml_parser)
 
 use_precompiled_header2(
@@ -62,6 +70,8 @@ set_target_properties(xml_parser PROPERTIES
   FOLDER "core/service"
   )
 
+if (BIICODE)
+else()
 install(TARGETS xml_parser
   # IMPORTANT: Add the xml_parser library to the "export-set"
   EXPORT xml_parser-targets
@@ -70,3 +80,5 @@ install(TARGETS xml_parser
   ARCHIVE DESTINATION "${INSTALL_LIB_DIR}" COMPONENT lib
   PUBLIC_HEADER DESTINATION "${INSTALL_INCLUDE_DIR}/xml_parser"
     COMPONENT dev)
+
+endif()
