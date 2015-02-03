@@ -72,13 +72,13 @@ set_target_properties(xml_parser PROPERTIES
 
 if (BIICODE)
 else()
-install(TARGETS xml_parser
-  # IMPORTANT: Add the xml_parser library to the "export-set"
-  EXPORT xml_parser-targets
-  RUNTIME DESTINATION "${INSTALL_BIN_DIR}" COMPONENT bin
-  LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT shlib
-  ARCHIVE DESTINATION "${INSTALL_LIB_DIR}" COMPONENT lib
-  PUBLIC_HEADER DESTINATION "${INSTALL_INCLUDE_DIR}/xml_parser"
-    COMPONENT dev)
+              install(TARGETS xml_parser
+                # IMPORTANT: Add the xml_parser library to the "export-set"
+                EXPORT xml_parser-targets
+                RUNTIME DESTINATION "${INSTALL_BIN_DIR}" COMPONENT bin
+                LIBRARY DESTINATION "${INSTALL_LIB_DIR}" COMPONENT shlib
+                ARCHIVE DESTINATION "${INSTALL_LIB_DIR}" COMPONENT lib
+                PUBLIC_HEADER DESTINATION "${INSTALL_INCLUDE_DIR}/xml_parser"
+                  COMPONENT dev)
 
 endif()

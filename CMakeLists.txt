@@ -58,39 +58,39 @@ endif()
 
 if (BIICODE)
 else()
-# Add all targets to the build-tree export set
-export(TARGETS xml_parser
-  FILE "${PROJECT_BINARY_DIR}/xml_parser-targets.cmake")
+              # Add all targets to the build-tree export set
+              export(TARGETS xml_parser
+                FILE "${PROJECT_BINARY_DIR}/xml_parser-targets.cmake")
 
-  
-# Export the package for use from the build-tree
-# (this registers the build-tree with a global CMake-registry)
-export(PACKAGE xml_parser)
+                
+              # Export the package for use from the build-tree
+              # (this registers the build-tree with a global CMake-registry)
+              export(PACKAGE xml_parser)
 
-# Create the xml_parser-config.cmake and xml_parser-config-version files
-file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
-   "${INSTALL_INCLUDE_DIR}")
-# ... for the build tree
-set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
-configure_file(xml_parser-config.cmake.in
-  "${PROJECT_BINARY_DIR}/xml_parser-config.cmake" @ONLY)
-# ... for the install tree
-set(CONF_INCLUDE_DIRS "\${XML_PARSER_CMAKE_DIR}/${REL_INCLUDE_DIR}")
-configure_file(xml_parser-config.cmake.in
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/xml_parser-config.cmake" @ONLY)
-# ... for both
-configure_file(xml_parser-config-version.cmake.in
-  "${PROJECT_BINARY_DIR}/xml_parser-config-version.cmake" @ONLY)
+              # Create the xml_parser-config.cmake and xml_parser-config-version files
+              file(RELATIVE_PATH REL_INCLUDE_DIR "${INSTALL_CMAKE_DIR}"
+                 "${INSTALL_INCLUDE_DIR}")
+              # ... for the build tree
+              set(CONF_INCLUDE_DIRS "${PROJECT_SOURCE_DIR}" "${PROJECT_BINARY_DIR}")
+              configure_file(xml_parser-config.cmake.in
+                "${PROJECT_BINARY_DIR}/xml_parser-config.cmake" @ONLY)
+              # ... for the install tree
+              set(CONF_INCLUDE_DIRS "\${XML_PARSER_CMAKE_DIR}/${REL_INCLUDE_DIR}")
+              configure_file(xml_parser-config.cmake.in
+                "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/xml_parser-config.cmake" @ONLY)
+              # ... for both
+              configure_file(xml_parser-config-version.cmake.in
+                "${PROJECT_BINARY_DIR}/xml_parser-config-version.cmake" @ONLY)
 
-# Install the xml_parser-config.cmake and xml_parser-config-version.cmake
-install(FILES
-  "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/xml_parser-config.cmake"
-  "${PROJECT_BINARY_DIR}/xml_parser-config-version.cmake"
-  DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
-  
-# Install the export set for use with the install-tree
-install(EXPORT xml_parser-targets DESTINATION
-  "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+              # Install the xml_parser-config.cmake and xml_parser-config-version.cmake
+              install(FILES
+                "${PROJECT_BINARY_DIR}${CMAKE_FILES_DIRECTORY}/xml_parser-config.cmake"
+                "${PROJECT_BINARY_DIR}/xml_parser-config-version.cmake"
+                DESTINATION "${INSTALL_CMAKE_DIR}" COMPONENT dev)
+                
+              # Install the export set for use with the install-tree
+              install(EXPORT xml_parser-targets DESTINATION
+                "${INSTALL_CMAKE_DIR}" COMPONENT dev)
 endif()
 
 message(STATUS "Files will be installed at ${CMAKE_INSTALL_PREFIX}")
