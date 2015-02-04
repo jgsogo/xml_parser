@@ -1,63 +1,80 @@
 if(BIICODE)
+
               INIT_BIICODE_BLOCK()
-              ADD_BIICODE_TARGETS()
-endif()
+              
+              SET(BII_LIB_TYPE SHARED)
 
-cmake_minimum_required(VERSION 2.8)
-project(xml_parser CXX)
-
-set(XML_PARSER_MAJOR_VERSION 1)
-set(XML_PARSER_MINOR_VERSION 0)
-set(XML_PARSER_PATCH_VERSION 0)
-set(XML_PARSER_VERSION
-  ${XML_PARSER_MAJOR_VERSION}.${XML_PARSER_MINOR_VERSION}.${XML_PARSER_PATCH_VERSION})
-
-# Set default for CMAKE_INSTALL_PREFIX
-SET(CORE_INSTALL_PREFIX "C:/libraries/core/service" CACHE PATH "Prefix prepended to
-install directories")
-SET(CMAKE_INSTALL_PREFIX "${CORE_INSTALL_PREFIX}" CACHE INTERNAL "Prefix
-prepended to install directories" FORCE)
-  
-# Offer the user the choice of overriding the installation directories
-set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
-set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
-set(INSTALL_INCLUDE_DIR include CACHE PATH
-  "Installation directory for header files")
-if(WIN32 AND NOT CYGWIN)
-  set(DEF_INSTALL_CMAKE_DIR CMake)
+              set(XML_PARSER_SRC
+                  xml_parser/api.cpp
+                  xml_parser/dllmain.cpp
+                  xml_parser/node.cpp
+                  xml_parser/node_allocator.cpp
+                  xml_parser/node_expat.cpp
+                  xml_parser/parser.cpp
+                  xml_parser/parser_expat.cpp
+                  xml_parser/stdafx.cpp
+                  xml_parser/xml_parser.cpp
+                  )
+              SET(BII_LIB_SRC ${XML_PARSER_SRC})
+              SET(BII_examples_xml_parser_basic_main_SRC examples/xml_parser_basic/main.cpp)
+              
+              ADD_BIICODE_TARGETS()              
 else()
-  set(DEF_INSTALL_CMAKE_DIR lib/CMake/xml_parser)
-endif()
-set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
-  "Installation directory for CMake files")
-  
-# Make relative paths absolute (needed later on)
-foreach(p LIB BIN INCLUDE CMAKE)
-  set(var INSTALL_${p}_DIR)
-  if(NOT IS_ABSOLUTE "${${var}}")
-    set(${var} "${CMAKE_INSTALL_PREFIX}/${${var}}")
-  endif()
-endforeach()
 
-# set up include-directories
-include_directories(
-  "${PROJECT_SOURCE_DIR}"   # to find xml_parser/txttable_parser.h
-  "${PROJECT_BINARY_DIR}")  # to find xml_parser/config.h
 
-set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+              cmake_minimum_required(VERSION 2.8)
+              project(xml_parser CXX)
 
-# Add sub-directories
-add_subdirectory(xml_parser)
-OPTION(BUILD_EXAMPLES "Build xml_parser examples" OFF)
-if(${BUILD_EXAMPLES})
-	add_subdirectory(examples) 
-endif()
+              set(XML_PARSER_MAJOR_VERSION 1)
+              set(XML_PARSER_MINOR_VERSION 0)
+              set(XML_PARSER_PATCH_VERSION 0)
+              set(XML_PARSER_VERSION
+                ${XML_PARSER_MAJOR_VERSION}.${XML_PARSER_MINOR_VERSION}.${XML_PARSER_PATCH_VERSION})
 
-# The interesting stuff goes here
-# ===============================
+              # Set default for CMAKE_INSTALL_PREFIX
+              SET(CORE_INSTALL_PREFIX "C:/libraries/core/service" CACHE PATH "Prefix prepended to
+              install directories")
+              SET(CMAKE_INSTALL_PREFIX "${CORE_INSTALL_PREFIX}" CACHE INTERNAL "Prefix
+              prepended to install directories" FORCE)
+                
+              # Offer the user the choice of overriding the installation directories
+              set(INSTALL_LIB_DIR lib CACHE PATH "Installation directory for libraries")
+              set(INSTALL_BIN_DIR bin CACHE PATH "Installation directory for executables")
+              set(INSTALL_INCLUDE_DIR include CACHE PATH
+                "Installation directory for header files")
+              if(WIN32 AND NOT CYGWIN)
+                set(DEF_INSTALL_CMAKE_DIR CMake)
+              else()
+                set(DEF_INSTALL_CMAKE_DIR lib/CMake/xml_parser)
+              endif()
+              set(INSTALL_CMAKE_DIR ${DEF_INSTALL_CMAKE_DIR} CACHE PATH
+                "Installation directory for CMake files")
+                
+              # Make relative paths absolute (needed later on)
+              foreach(p LIB BIN INCLUDE CMAKE)
+                set(var INSTALL_${p}_DIR)
+                if(NOT IS_ABSOLUTE "${${var}}")
+                  set(${var} "${CMAKE_INSTALL_PREFIX}/${${var}}")
+                endif()
+              endforeach()
 
-if (BIICODE)
-else()
+              # set up include-directories
+              include_directories(
+                "${PROJECT_SOURCE_DIR}"   # to find xml_parser/txttable_parser.h
+                "${PROJECT_BINARY_DIR}")  # to find xml_parser/config.h
+
+              set_property(GLOBAL PROPERTY USE_FOLDERS ON)
+
+              # Add sub-directories
+              add_subdirectory(xml_parser)
+              OPTION(BUILD_EXAMPLES "Build xml_parser examples" OFF)
+              if(${BUILD_EXAMPLES})
+                            add_subdirectory(examples) 
+              endif()
+
+              # The interesting stuff goes here
+              # ===============================
+
               # Add all targets to the build-tree export set
               export(TARGETS xml_parser
                 FILE "${PROJECT_BINARY_DIR}/xml_parser-targets.cmake")
