@@ -9,7 +9,7 @@
     #include <vld.h>
 #endif
 
-#include "jgsogo/expat/expat/lib/expat.h"
+#include "expat/lib/expat.h"
 
 #include "../depends/logger/logging.h"
 #undef LOGGER

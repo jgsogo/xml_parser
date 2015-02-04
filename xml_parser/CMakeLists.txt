@@ -8,9 +8,9 @@ set(XML_PARSER_SRC_FILES
               ${_headers}
               ${_src}
               ${PROJECT_SOURCE_DIR}/xml_parser/config.h.in
-              ${PROJECT_SOURCE_DIR}/xml_parser/CMakeLists.txt
-              PARENT_SCOPE
+              ${PROJECT_SOURCE_DIR}/xml_parser/CMakeLists.txt              
               )
+set(XML_PARSER_SRC_FILES ${XML_PARSER_SRC_FILES} PARENT_SCOPE)
 configure_file(${PROJECT_SOURCE_DIR}/xml_parser/config.h.in "${PROJECT_BINARY_DIR}/config.h" @ONLY)
 
 
@@ -27,7 +27,8 @@ else()
 endif(WIN32)
     
     
-if(NOT BIICODE)     
+if(NOT BIICODE) 
+    include (GenerateExportHeader)    
     include(../depends/cmake/use_precompiled_header2.cmake)
            
     # Look for expat

@@ -60,6 +60,7 @@ else()
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
     # Add sub-directories    
+    add_subdirectory(xml_parser)
     OPTION(BUILD_EXAMPLES "Build xml_parser examples" OFF)
     if(${BUILD_EXAMPLES})
                 add_subdirectory(examples) 

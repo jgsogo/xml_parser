@@ -6,8 +6,8 @@ file(GLOB _src "${PROJECT_SOURCE_DIR}/examples/xml_parser_basic/*.cpp")
 set(EXAMPLES_XML_PARSER_BASIC_SRC_FILES
 	${_headers}
 	${_src}
-    PARENT_SCOPE
 	)
+set(EXAMPLES_XML_PARSER_BASIC_SRC_FILES ${EXAMPLES_XML_PARSER_BASIC_SRC_FILES} PARENT_SCOPE)
 
 if(WIN32)
     # remove warning C4275: se ha utilizado una interfaz no de DLL class
