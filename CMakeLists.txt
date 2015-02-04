@@ -1,4 +1,11 @@
+
+set(XML_PARSER_MAJOR_VERSION 1)
+set(XML_PARSER_MINOR_VERSION 0)
+set(XML_PARSER_PATCH_VERSION 0)
+set(XML_PARSER_VERSION ${XML_PARSER_MAJOR_VERSION}.${XML_PARSER_MINOR_VERSION}.${XML_PARSER_PATCH_VERSION})
+
 if(BIICODE)
+              include (GenerateExportHeader)
 
               INIT_BIICODE_BLOCK()
               
@@ -19,17 +26,17 @@ if(BIICODE)
               SET(BII_examples_xml_parser_basic_main_SRC examples/xml_parser_basic/main.cpp)
               
               ADD_BIICODE_TARGETS()              
+
+              configure_file(xml_parser/config.h.in "${CMAKE_CURRENT_BINARY_DIR}/config.h" @ONLY)
+              generate_export_header(${BII_LIB_TARGET} BASE_NAME xml_parser)
+              
+              target_include_directories( ${BII_LIB_TARGET} PUBLIC "${CMAKE_CURRENT_BINARY_DIR}/../")              
 else()
 
 
               cmake_minimum_required(VERSION 2.8)
               project(xml_parser CXX)
 
-              set(XML_PARSER_MAJOR_VERSION 1)
-              set(XML_PARSER_MINOR_VERSION 0)
-              set(XML_PARSER_PATCH_VERSION 0)
-              set(XML_PARSER_VERSION
-                ${XML_PARSER_MAJOR_VERSION}.${XML_PARSER_MINOR_VERSION}.${XML_PARSER_PATCH_VERSION})
 
               # Set default for CMAKE_INSTALL_PREFIX
               SET(CORE_INSTALL_PREFIX "C:/libraries/core/service" CACHE PATH "Prefix prepended to
