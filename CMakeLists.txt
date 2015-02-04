@@ -9,20 +9,18 @@ if(BIICODE)
 
               INIT_BIICODE_BLOCK()
               
+              # Building the library
               SET(BII_LIB_TYPE SHARED)
 
+              file(GLOB _headers "xml_parser/*.h")
+              file(GLOB _src "xml_parser/*.cpp")
               set(XML_PARSER_SRC
-                  xml_parser/api.cpp
-                  xml_parser/dllmain.cpp
-                  xml_parser/node.cpp
-                  xml_parser/node_allocator.cpp
-                  xml_parser/node_expat.cpp
-                  xml_parser/parser.cpp
-                  xml_parser/parser_expat.cpp
-                  xml_parser/stdafx.cpp
-                  xml_parser/xml_parser.cpp
-                  )
+                            ${_headers}
+                            ${_src}
+                            xml_parser/config.h.in
+                            )              
               SET(BII_LIB_SRC ${XML_PARSER_SRC})
+              
               SET(BII_examples_xml_parser_basic_main_SRC examples/xml_parser_basic/main.cpp)
               
               ADD_BIICODE_TARGETS()              
