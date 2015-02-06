@@ -41,7 +41,7 @@ deploy_script:
 
 environment:
   project_name:
-    "xml_parser"
+    "jgsogo | xml_parser"
   block_user:
     "jgsogo"
   block_name:

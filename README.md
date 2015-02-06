@@ -1,5 +1,7 @@
 # XML Parser
 
+[![Build status](https://ci.appveyor.com/api/projects/status/0msq8um4jtkrjc68?svg=true)](https://ci.appveyor.com/project/jgsogo/xml-parser)
+
 
 ## Description
 
