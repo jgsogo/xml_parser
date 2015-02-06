@@ -2,6 +2,8 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/0msq8um4jtkrjc68?svg=true)](https://ci.appveyor.com/project/jgsogo/xml-parser)
 
+[![Build Status](https://webapi.biicode.com/v1/badges/jgsogo/jgsogo/xml_parser/master)](https://www.biicode.com/jgsogo/xml_parser)
+
 
 ## Description
 
