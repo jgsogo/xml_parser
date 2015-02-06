@@ -13,6 +13,8 @@ install:
   - cmd: bii -v
   - cmd: del bii-win.exe
   - cmd: del cmake.zip
+  - cmd: echo "Download submodules..."
+  - cmd: git submodule update --init --recursive
 
 before_build:
   - cmd: bii init %project_name%
