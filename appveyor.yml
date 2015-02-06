@@ -21,7 +21,7 @@ before_build:
     # move the files
   - cmd: for %%i in (../*) do if %%i NEQ "%project_name%" move "..\%%i" blocks\%block_user%\%block_name%\
   # move the directories -> there are none in this repo:
-  # cmd: for /d %%i in (../*) do if %%i NEQ "%project_name%" move "..\%%i" blocks\%block_user%\%block_name%\
+  - cmd: for /d %%i in (../*) do if %%i NEQ "%project_name%" move "..\%%i" blocks\%block_user%\%block_name%\
   - cmd: bii cpp:configure -G "Visual Studio 10"
 
 build_script:
