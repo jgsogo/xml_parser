@@ -56,7 +56,7 @@ else()
     include_directories(
     "${PROJECT_SOURCE_DIR}"   # to find xml_parser/txttable_parser.h
     "${PROJECT_BINARY_DIR}")  # to find xml_parser/config.h
-
+    
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
     # Add sub-directories    

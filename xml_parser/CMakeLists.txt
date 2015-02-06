@@ -11,8 +11,7 @@ set(XML_PARSER_SRC_FILES
               ${PROJECT_SOURCE_DIR}/xml_parser/CMakeLists.txt              
               )
 set(XML_PARSER_SRC_FILES ${XML_PARSER_SRC_FILES} PARENT_SCOPE)
-configure_file(${PROJECT_SOURCE_DIR}/xml_parser/config.h.in "${PROJECT_BINARY_DIR}/config.h" @ONLY)
-
+configure_file(${PROJECT_SOURCE_DIR}/xml_parser/config.h.in "${PROJECT_BINARY_DIR}/xml_parser/config.h" @ONLY)
 
 #------------------------------------------
 #   Add export macro and
