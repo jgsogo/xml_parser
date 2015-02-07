@@ -1,8 +1,10 @@
 # XML Parser
 
-[![Build status](https://ci.appveyor.com/api/projects/status/0msq8um4jtkrjc68?svg=true)](https://ci.appveyor.com/project/jgsogo/xml-parser)
+Build status:
 
-[![Build Status](https://webapi.biicode.com/v1/badges/jgsogo/jgsogo/xml_parser/master)](https://www.biicode.com/jgsogo/xml_parser)
+ * Unix (travis) [![Build Status](https://travis-ci.org/jgsogo/xml_parser.svg)](https://travis-ci.org/jgsogo/xml_parser)
+ * Visual Studio 2010 [![Build status](https://ci.appveyor.com/api/projects/status/0msq8um4jtkrjc68?svg=true)](https://ci.appveyor.com/project/jgsogo/xml-parser)
+ * Biicode [![Build Status](https://webapi.biicode.com/v1/badges/jgsogo/jgsogo/xml_parser/master)](https://www.biicode.com/jgsogo/xml_parser)
 
 
 ## Description
