@@ -2,7 +2,6 @@ language: cpp
 compiler:
 - gcc
 before_install:
-# Needed for g++ 4.8
 - sudo add-apt-repository -y ppa:ubuntu-toolchain-r/test
 - sudo apt-get update -qq
 install:
@@ -15,8 +14,7 @@ install:
 - sudo cp -fR cmake-3.0.2-Linux-64/* /usr
 - rm -rf cmake-3.0.2-Linux-64
 - rm cmake-3.0.2-Linux-64.tar.gz
-# Needed for g++4.8
-- sudo apt-get install -qq gcc-4.8 g++-4.8 
+- sudo apt-get install -qq gcc-4.8 g++-4.8
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
 script:
 - cmake --version
@@ -32,4 +30,4 @@ after_success:
 - bii publish
 env:
   global:
-  - secure: soPf0HbpxzD1vEwUdLNhU4YiDKKQ+28jQYCf1B8Zc1/FYTvrRIqFcKkR4vwlzDaZAMfo2+c0OThjD55+heenZ5riOOel4D4vn/TjTcHZ9Q8vYgQdr2pml8gWGRbN5sLN8W1srliIiWrGmIa7tDSQtaWiKyBQJHGDaybOJ136mbc=
+    secure: XoESFyIt+p7wtcLqordaEsJFLTvbZ4NxOlFDaKDVmK9q63Yoja1jCxMurpJNmJt9vZildVJvQI2ptouvLtSAFascp+Mpv49yFJaOgx+GZqniNRSV3s+JD/8SVXzjW40sKjDL8HIGZjFFU8RmSSzdiJ26E0uLd7H6L6gZad1t/GM=
