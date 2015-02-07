@@ -27,7 +27,7 @@ script:
 - cd bin
 after_success:
 - bii user jgsogo -p $BII_JGSOGO_PASSWORD
-- bii publish
+- bii publish || dir
 env:
   global:
     secure: XoESFyIt+p7wtcLqordaEsJFLTvbZ4NxOlFDaKDVmK9q63Yoja1jCxMurpJNmJt9vZildVJvQI2ptouvLtSAFascp+Mpv49yFJaOgx+GZqniNRSV3s+JD/8SVXzjW40sKjDL8HIGZjFFU8RmSSzdiJ26E0uLd7H6L6gZad1t/GM=
