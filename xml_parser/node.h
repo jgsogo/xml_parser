@@ -9,26 +9,13 @@
 
 #include "xml_parser/xml_parser_export.h"
 
-#if  _WIN32 && _MSC_VER <= 1500
-	#include "boost/function.hpp"
-	#include <boost/function/function1.hpp>
-#elif __unix || __linux
-	#include "boost/function.hpp"
-	#include <boost/function/function1.hpp>
-#endif
 
 namespace core {
     namespace service {
 
         class XML_PARSER_EXPORT node {
             public:
-#if _WIN32 && _MSC_VER <= 1500
-				typedef boost::function1<void,const node&> _t_on_parsed_node;
-#elif __linux || __unix
-                typedef boost::function1<void, const node&> _t_on_parsed_node;
-#else
-				typedef std::function<void (const node&)> _t_on_parsed_node;
-#endif
+		typedef std::function<void (const node&)> _t_on_parsed_node;
                 typedef std::map<std::string, std::string> _t_attributes;
                 typedef std::vector<node*> _t_children;
             public:

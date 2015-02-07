@@ -19,6 +19,12 @@ if(BIICODE)
        
     ADD_BIICODE_TARGETS()              
 
+    IF(APPLE)
+        TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++11 -stdlib=libc++")
+    ELSEIF (WIN32 OR UNIX)
+        TARGET_COMPILE_OPTIONS(${BII_BLOCK_TARGET} INTERFACE "-std=c++11")
+    ENDIF(APPLE)
+
     generate_export_header(${BII_LIB_TARGET} BASE_NAME xml_parser) # Necesito ponerlo después de "ADD_BIICODE_TARGETS"
     target_include_directories( ${BII_LIB_TARGET} PUBLIC "${PROJECT_BINARY_DIR}/../") # Necesito ponerlo después de "ADD_BIICODE_TARGETS"
     target_include_directories( ${BII_LIB_TARGET} PUBLIC "${PROJECT_BINARY_DIR}") # Necesito ponerlo después de "ADD_BIICODE_TARGETS"

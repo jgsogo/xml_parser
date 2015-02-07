@@ -1,6 +1,7 @@
 
 #include "stdafx.h"
 #include <cstring>
+#include <stdio.h>
 #include "parser_expat.h"
 
 #include "node_expat_allocator.h"

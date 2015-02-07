@@ -1,0 +1,30 @@
+language: cpp
+compiler:
+- gcc
+before_install:
+- sudo apt-get update -qq
+install:
+- wget http://www.biicode.com/downloads/latest/ubuntu64
+- mv ubuntu64 bii-ubuntu64.deb
+- (sudo dpkg -i bii-ubuntu64.deb) && sudo apt-get -f install
+- rm bii-ubuntu64.deb
+- wget https://s3.amazonaws.com/biibinaries/thirdparty/cmake-3.0.2-Linux-64.tar.gz
+- tar -xzf cmake-3.0.2-Linux-64.tar.gz
+- sudo cp -fR cmake-3.0.2-Linux-64/* /usr
+- rm -rf cmake-3.0.2-Linux-64
+- rm cmake-3.0.2-Linux-64.tar.gz
+script:
+- cmake --version
+- bii init biicode_project
+- mkdir -p ./biicode_project/blocks/jgsogo/xml_parser
+- mv !(biicode_project) ./biicode_project/blocks/jgsogo/xml_parser
+- cd biicode_project
+- bii find -um
+- bii cpp:build
+- cd bin
+after_success:
+- bii user jgsogo -p $BII_JGSOGO_PASSWORD
+- bii publish
+env:
+  global:
+  - secure: soPf0HbpxzD1vEwUdLNhU4YiDKKQ+28jQYCf1B8Zc1/FYTvrRIqFcKkR4vwlzDaZAMfo2+c0OThjD55+heenZ5riOOel4D4vn/TjTcHZ9Q8vYgQdr2pml8gWGRbN5sLN8W1srliIiWrGmIa7tDSQtaWiKyBQJHGDaybOJ136mbc=
