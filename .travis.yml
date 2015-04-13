@@ -18,10 +18,10 @@ install:
 - sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 90
 script:
 - cmake --version
-- bii init biicode_project
-- mkdir -p ./biicode_project/blocks/jgsogo/xml_parser
-- mv !(biicode_project) ./biicode_project/blocks/jgsogo/xml_parser
-- cd biicode_project
+- bii init xml_parser
+- mkdir -p ./xml_parser/blocks/jgsogo/xml_parser
+- mv !(xml_parser) ./xml_parser/blocks/jgsogo/xml_parser
+- cd xml_parser
 - bii find -um
 - bii cpp:build
 - cd bin
