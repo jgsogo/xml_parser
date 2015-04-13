@@ -7,7 +7,7 @@
 #include <functional>
 #include <algorithm>
 
-#include "xml_parser/xml_parser_export.h"
+#include "xml_parser_export.h"
 
 
 namespace core {

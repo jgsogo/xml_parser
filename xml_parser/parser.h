@@ -3,7 +3,7 @@
 
 #include <map>
 #include <vector>
-#include "xml_parser/xml_parser_export.h"
+#include "xml_parser_export.h"
 #include "node.h"
 
 namespace core {

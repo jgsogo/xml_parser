@@ -54,9 +54,8 @@ else()
     endforeach()
 
     # set up include-directories
-    include_directories(
-    "${PROJECT_SOURCE_DIR}"   # to find xml_parser/txttable_parser.h
-    "${PROJECT_BINARY_DIR}")  # to find xml_parser/config.h
+    include_directories("${PROJECT_BINARY_DIR}/${CMAKE_PROJECT_NAME}"   # to find xml_parser_export.h
+                        ${PROJECT_BINARY_DIR})                          # to find xml_parser/config.h
     
     set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
