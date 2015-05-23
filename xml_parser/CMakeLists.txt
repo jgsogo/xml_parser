@@ -22,7 +22,7 @@ if(WIN32)
     # remove warning C4251: 'atribute' : class 'name' necesita tener una interfaz DLL...
     add_definitions(-D_CRT_SECURE_NO_WARNINGS /wd4275 /wd4251)
 else()
-    list( APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS} -g -ftest-coverage -fprofile-arcs")
+    list( APPEND CMAKE_CXX_FLAGS "-std=c++0x ${CMAKE_CXX_FLAGS}")
 endif(WIN32)
     
     
@@ -39,7 +39,7 @@ if(NOT BIICODE)
     #        Build a library
     add_definitions(-D_UNICODE -DUNICODE)
     add_compiler_export_flags()
-    add_library(xml_parser SHARED ${XML_PARSER_SRC_FILES})
+    add_library(xml_parser ${XML_PARSER_SRC_FILES})
     target_link_libraries(xml_parser ${EXPAT_LIBRARIES} )
     generate_export_header(xml_parser)
 

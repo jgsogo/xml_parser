@@ -9,7 +9,7 @@
     #include <vld.h>
 #endif
 
-#include "expat/lib/expat.h"
+#include "expat.h"
 
 #include "../depends/logger/logging.h"
 #undef LOGGER
