@@ -11,19 +11,22 @@ namespace core {
 
 #if _WIN32 && _MSC_VER <= 1500
         typedef void (*_t_f_status)(const std::string&);
+        const void* _t_f_status_null = 0;
 #elif __unix || __linux
         typedef void (*_t_f_status)(const std::string&);
+        const void* _t_f_status_null = 0;
 #else
         typedef std::function<void (const std::string&)> _t_f_status;
+        inline void _t_f_status_null(const std::string&) {};
 #endif
 
         struct parser {
             public:
                 //parser() {};
                 //virtual ~parser() {};
-                virtual int register_tag(const std::string &tag, node::_t_on_parsed_node fn= 0) = 0;
-				virtual int parse_file(const std::string &file, const std::string &main_tag, _t_f_status f_status =0) = 0;
-                virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f_status =0) = 0;
+                virtual int register_tag(const std::string &tag, node::_t_on_parsed_node fn = _t_f_status_null) = 0;
+                virtual int parse_file(const std::string &file, const std::string &main_tag, _t_f_status f_status = _t_f_status_null) = 0;
+                virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f_status = _t_f_status_null) = 0;
                 virtual void reset() = 0;
             };
 
@@ -33,10 +36,10 @@ namespace core {
                 __parser();
                 virtual ~__parser();
 
-                virtual int register_tag(const std::string &tag, node::_t_on_parsed_node fn= 0);
-                virtual int parse_file(const std::string &file, const std::string &main_tag, _t_f_status f_status =0);
+                virtual int register_tag(const std::string &tag, node::_t_on_parsed_node fn = _t_f_status_null);
+                virtual int parse_file(const std::string &file, const std::string &main_tag, _t_f_status f_status = _t_f_status_null);
 
-                virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f =0);
+                virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f = _t_f_status_null);
                 virtual void reset();
 
             protected:

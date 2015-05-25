@@ -51,6 +51,7 @@ if(NOT BIICODE)
         )
 
     set_target_properties(xml_parser PROPERTIES
+      DEBUG_POSTFIX d
       PUBLIC_HEADER "api.h;parser_expat.h;parser.h;expat_handler.h;node.h;${CMAKE_CURRENT_BINARY_DIR}/config.h;${CMAKE_CURRENT_BINARY_DIR}/xml_parser_export.h;"
       LINKER_LANGUAGE CXX
       FOLDER "core/service"
