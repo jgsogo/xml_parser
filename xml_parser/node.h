@@ -15,7 +15,7 @@ namespace core {
 
         class XML_PARSER_EXPORT node {
             public:
-		typedef std::function<void (const node&)> _t_on_parsed_node;
+                typedef std::function<void (const node&)> _t_on_parsed_node;
                 typedef std::map<std::string, std::string> _t_attributes;
                 typedef std::vector<node*> _t_children;
             public:

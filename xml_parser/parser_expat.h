@@ -20,7 +20,7 @@ namespace core {
 
                     XML_ParserStruct*& get_parser() { return parser;};
 
-                    virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f_status =0);
+                    virtual int parse(FILE *buffer, const std::string &main_tag, _t_f_status f_status = _t_f_status_null);
                     virtual void reset();
 
                     virtual void on_start_tag(const char* pszName, const char** papszAttrs);
